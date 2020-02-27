@@ -1,13 +1,33 @@
 const express = require('express');
-require('./subscribe-evento');
-require('./publica-evento');
+const events = require('events');
 
-const app = express();
-app.get("/", function (req, res) {
-    res.send('Hello Word');
+class Server {
+    listen(port, callback){
+        this.port = port;
+        this.callback = callback;
+        // Criar um servidor para a nossa aplicação
+        this.emitter.emit("listen", false);
+    }
+
+    constructor(){
+        this.port;
+        this.callback;
+        this.emitter= new events.EventEmitter();
+
+        this.emitter.on("listen", (success)=>{
+            if(success){
+                this.callback();
+            }else{
+              throw "Error 404";
+            }
+        })
+    }
+
+
+}
+
+let app = new Server();
+
+app.listen(3040, ()=>{
+    console.log("Olá Mundo");
 });
-app.listen(3000, function () {
-   console.log('Exaple app listening on port 3000');
-});
-
-
