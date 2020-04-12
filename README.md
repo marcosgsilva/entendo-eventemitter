@@ -1,4 +1,4 @@
-<div style="font-weight:bold;">Aplicação de Teste para Endendimento do EventEmmiter</div>
+<h1>Aplicação de Teste para Endendimento do EventEmmiter</h1>
 
 Para rodar e instalar a aplicação execute os comandos:
 
